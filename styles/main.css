@@ -1,0 +1,202 @@
+body{
+    margin: 0;
+}
+
+/* Header and title */
+.header{
+    display :flex;
+    width: 100%;
+    padding: 0px 10px;
+    border: 1px solid #999;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    
+    
+}
+
+#title{
+    width:90%;
+    font-family: 'Passion One', cursive;
+}
+
+
+
+/* Create todo button */
+#createTodoBtn{
+    padding: 10px 5px;
+    border: 1px solid black;
+
+   
+}
+#createTodoBtn:hover{
+    background:  #2BBBAD;
+ }
+
+.fa-plus{
+padding: 5px;
+}
+
+
+ /* Main */
+
+main{
+    padding-top: 30px;
+    width: 50%;
+    margin:0 auto;
+ 
+}
+
+/* Article */
+#todoArticles{
+    display:flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.article{
+  padding: 10px;
+   justify-content: space-between;
+  
+    margin-top: 25px;
+    height: auto;
+    box-shadow: 1px 1px 5px 1px #2BBBAD;
+    margin-right: 10px;
+}
+
+.buttonDelete{
+    padding: 10px 10px;
+    background-color:#d9534f ;
+    color:white;
+    border: none;
+    cursor: pointer;
+    text-align:center;
+    margin-top: 22px;
+
+}
+
+.buttonComplete{
+    padding: 10px 10px;
+    background-color:#d9534f ;
+    color:white;
+    border: none;
+    cursor: pointer;
+    text-align:center;
+    margin-top: 22px;
+
+}
+
+
+.tableWrapper{
+    display:flex;
+    flex-direction: column;
+}
+.tableHeaders{
+    display:flex;
+
+    width:100%;
+    justify-content: space-between;
+    background: #999;
+    margin: 0;
+    
+}
+
+.tableContent{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    margin: 0;
+    background: #9999
+   
+}
+h5{
+    margin: 0;
+    width: 100%;
+    font-size: 1rem;
+}
+
+
+
+/* Todo Modal */
+
+.modal-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.5);
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s opacity 0,5s;
+    
+}
+
+.bg-active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal{
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    
+    width: 30%;
+    height:25%;
+    border-radius:10px;
+    
+   
+}
+
+.modalBody{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+   padding: 15px;
+   
+  
+
+    
+}
+.modalHeader{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-underline-position: below;
+    border-bottom: solid 0.5px #999;
+    justify-content: space-between;
+
+ 
+
+}
+
+.modalHeader h3{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+#modalBtn{
+    padding: 10px 30px;
+    background-color:#5cb85c ;
+    color:white;
+    border: none;
+
+    cursor: pointer;
+    text-align:center;
+    margin-top: 22px;
+}
+
+#closeModalBtn:hover{
+   cursor:pointer;
+
+
+}
+
+#modalBtn:hover{
+   filter:brightness(110%);
+}
+textarea{
+    resize: none;
+}

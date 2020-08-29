@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <!-- CSS links-->
+        <link href="styles/main.css" rel="stylesheet">
+
+        <!-- Fontawesome and gooogle fonts-->
+        <script src="https://kit.fontawesome.com/ff24bd5a99.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap" rel="stylesheet">
+        
+        <!--Scripts-->
+        <script src="js/main.js" defer></script>
+        
+        <meta charset="UTF-8">
+        <meta name="description" content ="todolist creation tool">
+        <meta name="keywords" content="todo,creation">
+        <meta name="author" content= "Henrik Nilsen">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Welcome</title>
+       
+
+    </head>
+    <body>
+        <header class="header">
+            <h3 id="title">HIOF</h3>
+            <h4>User user</h4>
+        </header>
+        <main>
+            <a id="createTodoBtn"><i class="fas fa-plus"></i> Todo</a>
+            <!--The modal to create an todolist-->
+            <div class="modal-bg">
+                <div class="modal">
+                    <div class="modalHeader">
+                        <h3>New todo</h3>
+                        <h3 id="closeModalBtn">x</h3>
+                    </div>
+                    <div class="modalBody">
+                        <label for="title">Title</label>
+                        <input  placeholder="Todotitle" type="text" id="inputTitle">
+                        <label for="description">Description<span>(Character countdown will appear hera)</span></label>
+                        <textarea maxlength="125" class="placeholder" placeholder="Description"></textarea>
+                        <label for="author">Author</label>
+                        <input type="text" id="author" placeholder="Author">
+                        <a id="modalBtn">Create</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!---This div will be filled with the todolist-->
+            <div id="todoArticles"></div>
+            <!--This div contains all the completed todos.-->
+            <div>
+                <h3>Completed todos</h3>
+                <div  class ="tableWrapper">
+                <div class="tableHeaders">
+                    <h5>Title</h5>
+                    <h5>Author</h5>
+                    <h5>Description</h5>
+                    <h5>Completed Date</h5>
+                </div>
+                <div class="tableContent"></div>
+                </div>
+            </div>
+        </main>
+
+    </body>
+</html>
