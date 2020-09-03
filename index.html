@@ -37,8 +37,8 @@
                     <div class="modalBody">
                         <label for="title">Title</label>
                         <input  placeholder="Todotitle" type="text" id="inputTitle">
-                        <label for="description">Description<span>(Character countdown will appear hera)</span></label>
-                        <textarea maxlength="125" id="textArea" placeholder="Description"></textarea>
+                        <label for="description">Description<span id="count">(125)</span></label>
+                        <textarea  maxlength="30" id="textArea" placeholder="Description"></textarea>
                         <label for="author">Author</label>
                         <input type="text" id="author" placeholder="Author">
                         <a id="modalBtn">Create</a>
@@ -58,7 +58,9 @@
                     <h5>Description</h5>
                     <h5>Completed Date</h5>
                 </div>
-                <div class="tableContent"></div>
+                <div id="tableContent">
+                 
+                </div>
                 </div>
             </div>
         </main>

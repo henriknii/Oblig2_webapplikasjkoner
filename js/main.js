@@ -5,10 +5,12 @@
 var modalBg = document.querySelector('.modal-bg');
 
 //Todo objects 
-
+let id= 0;
 let myTodos = []
+let completedTodos =[]
+
 // Keeping track of id for the todo
-let id = 0;
+
 //A test button for now
 let button = document.getElementById("createTodoBtn");
 let createTodoCardButton = document.getElementById('modalBtn');
@@ -16,31 +18,37 @@ let closeModalBtn = document.getElementById('closeModalBtn');
 
 //Function creating object and storing them in the array
 function createObject(){
-    id++
-    let todo = [];
+   
     let todoTitle = document.getElementById('inputTitle').value;
     let description = document.getElementById('textArea').value;
     let author = document.getElementById('author').value;
+
     
+
     if(todoTitle && description && author){
         let myTodoObj = {id:id,title: todoTitle, description: description, author:author}
-        todo.unshift(myTodoObj)
-    
-        closeModal()
+        myTodos.push(myTodoObj)
+        update();
+        closeModal();
     }
     else
     {
         alert("please enter your title,description and author")
     }
-}  
+    id++
 
-
-
-function update(obj){
-
-
-    
 }
+function update(){
+    document.getElementById("todoArticles").innerHTML = "";
+
+    const todosLen = myTodos.length < 3 ? myTodos.length : 3;
+
+    for(let i = 0; i < todosLen; i++){
+        generateTodoArticles(myTodos[i]);
+      
+    }
+}
+
 //Function to generate todo cards
 function generateTodoArticles(obj){
     
@@ -50,6 +58,7 @@ function generateTodoArticles(obj){
     // Creating article
     var article = document.createElement('article')
     article.className = "article"
+    article.id = obj.id;
     // Creating header
     var header = document.createElement('h1')
     header.textContent = obj.title;
@@ -62,8 +71,9 @@ function generateTodoArticles(obj){
     var buttonDelete = document.createElement('a')
     buttonDelete.textContent = "Delete";
     buttonDelete.className="buttonDelete"
-    buttonDelete.addEventListener("click",(e) =>{
-    deleteTodo(e,obj)
+    buttonDelete.addEventListener("click",() =>{
+         deleteTodo(obj)
+         
     })
 
 
@@ -73,13 +83,12 @@ function generateTodoArticles(obj){
     buttonComplete.textContent = "Complete";
     buttonComplete.className="buttonComplete"
     buttonComplete.onclick = () =>{
-        completedTask(obj)
+        completedTask(obj);
+        getFormattedDate();
+        deleteTodo(obj);
     }
 
   
-
-   
-
     //Appending all elements to the article 
     articleWrapper.appendChild(article)
     article.appendChild(header) 
@@ -91,11 +100,31 @@ function generateTodoArticles(obj){
 //Called when a task is completed 
 
 function completedTask(obj){
- let tableContent = document.getElementById('tableContent')
- let author = obj.author
- 
- tableContent.appendChild
-    
+
+    let tableContent = document.getElementById("tableContent")
+   
+    //Title
+    var title = document.createElement('h5') 
+    title.textContent=obj.title;
+    title.className ="h5"
+
+    //Author
+    let author = document.createElement('h5')
+    author.textContent = obj.author;
+    //Description
+    let descript = document.createElement('h5')
+    descript.textContent = obj.description;
+    //Date
+    let date = document.createElement('h5');
+    date.textContent = getFormattedDate();
+
+  
+
+    tableContent.appendChild(title);
+    tableContent.appendChild(author);
+    tableContent.appendChild(descript);
+    tableContent.appendChild(date);
+
 }
 
 //Called upon clicking the +todo to open modal for the todo creation window.
@@ -108,9 +137,18 @@ function closeModal(){
 }
 
 //called upon clicking delete
-function deleteTodo(e,obj){
+function deleteTodo(obj){
+   const index = myTodos.indexOf(obj);
+   if(index > -1){
+       myTodos.splice(index,1);
+   }
+
+   update();
     
+
 }
+
+
 
 
 
@@ -121,6 +159,8 @@ function getFormattedDate(){
     let year = date.getFullYear()
 
     return day + "." + month + "." + year
+    
+   
 }
 
 //Called upon creating the todo task.
@@ -131,3 +171,7 @@ button.addEventListener("click", openModal);
 
 //Closing the modal
 closeModalBtn.addEventListener("click",closeModal);
+
+document.getElementById("textArea").onkeyup = function(){
+    document.getElementById('count').innerHTML = `(${30 - this.value.length})`
+}
