@@ -27,7 +27,7 @@ function createObject(){
 
     if(todoTitle && description && author){
         let myTodoObj = {id:id,title: todoTitle, description: description, author:author}
-        myTodos.push(myTodoObj)
+        myTodos.unshift(myTodoObj)
         update();
         closeModal();
     }
@@ -37,8 +37,10 @@ function createObject(){
     }
     id++
 
+ 
 }
 function update(){
+    
     document.getElementById("todoArticles").innerHTML = "";
 
     const todosLen = myTodos.length < 3 ? myTodos.length : 3;
@@ -93,8 +95,9 @@ function generateTodoArticles(obj){
     articleWrapper.appendChild(article)
     article.appendChild(header) 
     article.appendChild(descr)
-    article.appendChild(buttonComplete) 
     article.appendChild(buttonDelete)
+    article.appendChild(buttonComplete) 
+    
 }
 
 //Called when a task is completed 
